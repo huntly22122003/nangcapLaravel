@@ -15,4 +15,4 @@ docker exec -it locvung_app composer install --prefer-dist
 
 Cơ chế hoạt động:
 1. docker-compose restart
-2. cd frontend / npm run dev
+2. cd frontend / npm run dev (hoặc tạo 1 file riêng ngoài root)
