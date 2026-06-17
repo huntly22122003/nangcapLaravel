@@ -1,0 +1,18 @@
+1. Run docker-compose up -d --build
+2. docker exec -it locvung_app composer create-project laravel/laravel=12.* . --prefer-dist --ignore-platform-reqs
+3. Phân quyền:  docker exec -it locvung_app chmod -R 775 storage bootstrap/cache
+                docker exec -it locvung_app chown -R www-data:www-data storage bootstrap/cache
+4. Tạo file .env chạy: docker exec -it locvung_app cp .env.example .env
+5. Tạo key: docker exec -it locvung_app php artisan key:generate
+6: Đảm bảo Laravel 12 kiểm tra trong composer.json Nếu lỡ là bản 13. hoặc khác thì sửa thành 12. và xóa composer.lock cùng vendor sau đó chạy lệnh:
+docker exec -it locvung_app composer install --prefer-dist
+7. docker exec -it locvung_app npm install
+8. docker exec -it locvung_app npm run build
+9. npx create-next-app@latest frontend --typescript --tailwind
+
+
+
+
+Cơ chế hoạt động:
+1. docker-compose restart
+2. cd frontend / npm run dev
