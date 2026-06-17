@@ -16,3 +16,6 @@ docker exec -it locvung_app composer install --prefer-dist
 Cơ chế hoạt động:
 1. docker-compose restart
 2. cd frontend / npm run dev (hoặc tạo 1 file riêng ngoài root)
+3. Vào DB: docker exec -it locvung_mysql mysql -u root -proot_password
+4. Add SQL: docker cp D:\TongLaravel\schema_legacy.sql locvung_mysql:/tmp/schema_legacy.sql -> docker exec -it locvung_mysql mysql -u root -proot_password -e "CREATE DATABASE IF NOT EXISTS locvung_caycanh CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" -> cmd /c "docker exec -i locvung_mysql mysql -u root -proot_password locvung_caycanh < D:\TongLaravel\schema_legacy.sql"
+5. 
