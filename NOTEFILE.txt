@@ -18,4 +18,26 @@ Cơ chế hoạt động:
 2. cd frontend / npm run dev (hoặc tạo 1 file riêng ngoài root)
 3. Vào DB: docker exec -it locvung_mysql mysql -u root -proot_password
 4. Add SQL: docker cp D:\TongLaravel\schema_legacy.sql locvung_mysql:/tmp/schema_legacy.sql -> docker exec -it locvung_mysql mysql -u root -proot_password -e "CREATE DATABASE IF NOT EXISTS locvung_caycanh CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" -> cmd /c "docker exec -i locvung_mysql mysql -u root -proot_password locvung_caycanh < D:\TongLaravel\schema_legacy.sql"
-5. 
+5. docker exec -it locvung_app php artisan migrate
+6. docker exec -it locvung_app php artisan db:seed --class=LegacyDataImporter
+
+Có thể thay đổi DB nếu cần thiết:
+docker exec -it locvung_mysql mysql -u root -proot_password locvung_caycanh -e "
+RENAME TABLE categories TO legacy_categories,
+procducts TO legacy_products,
+procducts9 TO legacy_products9,
+tintuc TO legacy_posts,
+gioithieu TO legacy_pages,
+thuvien TO legacy_galleries,
+customers TO legacy_customers,
+giohang TO legacy_cart,
+dangky TO legacy_registrations,
+hoidap TO legacy_faq,
+anhquangcao TO legacy_banners,
+quantrimenu TO legacy_menu,
+count TO legacy_count,
+stats TO legacy_stats,
+users TO legacy_users,
+lienhe TO legacy_contacts;
+"
+sau đó sử dụng lệnh: docker exec -it locvung_app php artisan migrate
