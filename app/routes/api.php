@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategoryController;
-use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\GalleryController;
@@ -12,6 +11,8 @@ use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\RegistrationController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\Admin\AuthController;
+use App\Http\Controllers\Api\Admin\ProductController;
 
 // Public routes
 Route::get('/categories', [CategoryController::class, 'index']);
@@ -50,3 +51,18 @@ Route::post('/cart/checkout', [CartController::class, 'checkout']);
 // Order routes
 Route::get('/orders', [OrderController::class, 'index']);
 Route::get('/orders/{id}', [OrderController::class, 'show']);
+
+
+// Admin routes
+Route::prefix('admin')->group(function () {
+    // Auth
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+    Route::get('/user', [AuthController::class, 'user'])->middleware('auth:sanctum');
+
+    // Products (bảo vệ bằng auth:sanctum)
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::apiResource('products', ProductController::class);
+        Route::post('products/update-order', [ProductController::class, 'updateOrder']);
+    });
+});

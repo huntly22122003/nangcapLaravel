@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->string('link')->nullable();
             $table->foreignId('parent_id')->nullable()->constrained('menus')->nullOnDelete();
             $table->unsignedInteger('sort_order')->default(0);
-            $table->string('position')->default('header'); // header, footer, sidebar
+            $table->string('position')->default('header');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

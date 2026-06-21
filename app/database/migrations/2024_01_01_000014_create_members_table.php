@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->string('username')->unique();
-            $table->string('password'); // bcrypt hash
+            $table->string('password');
             $table->integer('points')->default(0);
             $table->text('content')->nullable();
             $table->string('avatar')->nullable();

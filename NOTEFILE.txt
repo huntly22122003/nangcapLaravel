@@ -40,4 +40,7 @@ stats TO legacy_stats,
 users TO legacy_users,
 lienhe TO legacy_contacts;
 "
-sau đó sử dụng lệnh: docker exec -it locvung_app php artisan migrate
+1. sau đó sử dụng lệnh: docker exec -it locvung_app php artisan migrate
+2. docker exec -it locvung_app php artisan migrate:status Nếu đều yes là ok
+3. docker exec -it locvung_app php artisan db:seed --class=LegacyDataImporter 
+4. 

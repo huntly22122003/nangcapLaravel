@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->string('phone')->nullable();
             $table->string('username')->nullable();
             $table->string('session_id')->nullable();
-            $table->boolean('status')->default(false); // đã xác nhận?
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
