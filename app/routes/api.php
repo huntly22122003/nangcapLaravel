@@ -5,7 +5,6 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\GalleryController;
-use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\MenuController;
 use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\RegistrationController;
@@ -13,6 +12,7 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\Admin\AuthController;
 use App\Http\Controllers\Api\Admin\ProductController;
+use App\Http\Controllers\Api\Admin\BannerController;
 
 // Public routes
 Route::get('/categories', [CategoryController::class, 'index']);
@@ -64,5 +64,8 @@ Route::prefix('admin')->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         Route::apiResource('products', ProductController::class);
         Route::post('products/update-order', [ProductController::class, 'updateOrder']);
+        // Banners
+        Route::apiResource('banners', BannerController::class);
     });
 });
+
