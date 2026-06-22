@@ -11,6 +11,10 @@ use App\Repositories\Interfaces\BannerRepositoryInterface;
 use App\Repositories\Eloquent\BannerRepository;
 use App\Services\Interfaces\BannerServiceInterface;
 use App\Services\Admin\BannerService;
+use App\Repositories\Interfaces\CategoryRepositoryInterface; 
+use App\Repositories\Eloquent\CategoryRepository; 
+use App\Services\Interfaces\CategoryServiceInterface;
+use App\Services\Admin\CategoryService; 
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -22,6 +26,9 @@ class RepositoryServiceProvider extends ServiceProvider
         //Banners
         $this->app->bind(BannerRepositoryInterface::class, BannerRepository::class);
         $this->app->bind(BannerServiceInterface::class, BannerService::class);
+        // Category
+        $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
+        $this->app->bind(CategoryServiceInterface::class, CategoryService::class);
     }
 
     public function boot(): void

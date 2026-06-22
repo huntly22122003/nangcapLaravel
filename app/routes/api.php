@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\GalleryController;
@@ -13,6 +12,7 @@ use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\Admin\AuthController;
 use App\Http\Controllers\Api\Admin\ProductController;
 use App\Http\Controllers\Api\Admin\BannerController;
+use App\Http\Controllers\Api\Admin\CategoryController;
 
 // Public routes
 Route::get('/categories', [CategoryController::class, 'index']);
@@ -66,6 +66,8 @@ Route::prefix('admin')->group(function () {
         Route::post('products/update-order', [ProductController::class, 'updateOrder']);
         // Banners
         Route::apiResource('banners', BannerController::class);
+        // Categories
+        Route::apiResource('categories', CategoryController::class);
     });
 });
 
