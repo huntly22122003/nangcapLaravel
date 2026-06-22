@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\Admin\AuthController;
 use App\Http\Controllers\Api\Admin\ProductController;
 use App\Http\Controllers\Api\Admin\BannerController;
 use App\Http\Controllers\Api\Admin\CategoryController;
+use App\Http\Controllers\Api\Admin\UserController;
 
 // Public routes
 Route::get('/categories', [CategoryController::class, 'index']);
@@ -68,6 +69,7 @@ Route::prefix('admin')->group(function () {
         Route::apiResource('banners', BannerController::class);
         // Categories
         Route::apiResource('categories', CategoryController::class);
+        Route::apiResource('users', UserController::class);
     });
 });
 

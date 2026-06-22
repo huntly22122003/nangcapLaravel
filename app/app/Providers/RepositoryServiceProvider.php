@@ -15,6 +15,12 @@ use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Eloquent\CategoryRepository; 
 use App\Services\Interfaces\CategoryServiceInterface;
 use App\Services\Admin\CategoryService; 
+// app/Providers/RepositoryServiceProvider.php
+use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\Eloquent\UserRepository;
+use App\Services\Interfaces\UserServiceInterface;
+use App\Services\Admin\UserService;
+
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -29,6 +35,9 @@ class RepositoryServiceProvider extends ServiceProvider
         // Category
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
         $this->app->bind(CategoryServiceInterface::class, CategoryService::class);
+        // Trong register()
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(UserServiceInterface::class, UserService::class);
     }
 
     public function boot(): void
