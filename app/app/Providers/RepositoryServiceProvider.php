@@ -49,6 +49,11 @@ use App\Repositories\Eloquent\PageRepository;
 use App\Services\Interfaces\PageServiceInterface;
 use App\Services\Admin\PageService;
 
+//  thêm các use staement cho Order
+use App\Repositories\Interfaces\OrderRepositoryInterface;
+use App\Repositories\Eloquent\OrderRepository;
+use App\Services\Interfaces\OrderServiceInterface;
+use App\Services\Admin\OrderService;
 class RepositoryServiceProvider extends ServiceProvider
 {
     public function register(): void
@@ -80,6 +85,9 @@ class RepositoryServiceProvider extends ServiceProvider
         // Page
         $this->app->bind(PageRepositoryInterface::class, PageRepository::class);
         $this->app->bind(PageServiceInterface::class, PageService::class);
+        // Order
+        $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
+        $this->app->bind(OrderServiceInterface::class, OrderService::class);
     }
 
     public function boot(): void

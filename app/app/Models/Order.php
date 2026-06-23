@@ -4,23 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'customer_id', 'status', 'total_amount', 'note'
+        'customer_id',
+        'status',
+        'total_amount',
+        'note',
     ];
 
-    public function customer(): BelongsTo
+    protected $casts = [
+        'total_amount' => 'decimal:2',
+    ];
+
+    public function customer()
     {
         return $this->belongsTo(Customer::class);
     }
 
-    public function items(): HasMany
+    public function items()
     {
         return $this->hasMany(OrderItem::class);
     }

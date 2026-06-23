@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\MenuController;
 use App\Http\Controllers\Api\RegistrationController;
 use App\Http\Controllers\Api\CartController;
-use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\Admin\AuthController;
 use App\Http\Controllers\Api\Admin\ProductController;
 use App\Http\Controllers\Api\Admin\BannerController;
@@ -15,6 +14,7 @@ use App\Http\Controllers\Api\Admin\GalleryController;
 use App\Http\Controllers\Api\Admin\ContactController;
 use App\Http\Controllers\Api\Admin\FaqController;
 use App\Http\Controllers\Api\Admin\PageController;
+use App\Http\Controllers\Api\Admin\OrderController;
 
 // Public routes
 Route::get('/categories', [CategoryController::class, 'index']);
@@ -81,6 +81,9 @@ Route::prefix('admin')->group(function () {
         Route::apiResource('faqs', FaqController::class);
         // Page
         Route::apiResource('pages', PageController::class);
+        // Order
+        Route::apiResource('orders', OrderController::class);
+        Route::post('orders/{id}/status', [OrderController::class, 'updateStatus']);
     });
 });
 
