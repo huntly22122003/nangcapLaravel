@@ -1,18 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\CategoryController;
-use App\Http\Controllers\Api\PostController;
-use App\Http\Controllers\Api\PageController;
-use App\Http\Controllers\Api\GalleryController;
 use App\Http\Controllers\Api\MenuController;
-use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\RegistrationController;
 use App\Http\Controllers\Api\CartController;
-use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\Admin\AuthController;
 use App\Http\Controllers\Api\Admin\ProductController;
 use App\Http\Controllers\Api\Admin\BannerController;
+use App\Http\Controllers\Api\Admin\CategoryController;
+use App\Http\Controllers\Api\Admin\UserController;
+use App\Http\Controllers\Api\Admin\PostController;
+use App\Http\Controllers\Api\Admin\GalleryController;
+use App\Http\Controllers\Api\Admin\ContactController;
+use App\Http\Controllers\Api\Admin\FaqController;
+use App\Http\Controllers\Api\Admin\PageController;
+use App\Http\Controllers\Api\Admin\OrderController;
+use App\Http\Controllers\Api\Admin\ProductPostController;
 
 // Public routes
 Route::get('/categories', [CategoryController::class, 'index']);
@@ -66,6 +69,25 @@ Route::prefix('admin')->group(function () {
         Route::post('products/update-order', [ProductController::class, 'updateOrder']);
         // Banners
         Route::apiResource('banners', BannerController::class);
+        // Categories
+        Route::apiResource('categories', CategoryController::class);
+        Route::apiResource('users', UserController::class);
+        // Posts
+        Route::apiResource('posts', PostController::class);
+        // Galleries
+        Route::apiResource('galleries', GalleryController::class);
+        // Contacts
+        Route::apiResource('contacts', ContactController::class);
+        // FAQs
+        Route::apiResource('faqs', FaqController::class);
+        // Page
+        Route::apiResource('pages', PageController::class);
+        // Order
+        Route::apiResource('orders', OrderController::class);
+        Route::post('orders/{id}/status', [OrderController::class, 'updateStatus']);
+        // Product Post
+        Route::apiResource('product-posts', ProductPostController::class);
+
     });
 });
 
