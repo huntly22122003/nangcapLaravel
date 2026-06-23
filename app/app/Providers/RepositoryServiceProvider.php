@@ -21,6 +21,11 @@ use App\Repositories\Eloquent\UserRepository;
 use App\Services\Interfaces\UserServiceInterface;
 use App\Services\Admin\UserService;
 
+use App\Repositories\Interfaces\PostRepositoryInterface;
+use App\Repositories\Eloquent\PostRepository;
+use App\Services\Interfaces\PostServiceInterface;
+use App\Services\Admin\PostService;
+
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -38,6 +43,9 @@ class RepositoryServiceProvider extends ServiceProvider
         // Trong register()
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(UserServiceInterface::class, UserService::class);
+        // Post
+        $this->app->bind(PostRepositoryInterface::class, PostRepository::class); 
+        $this->app->bind(PostServiceInterface::class, PostService::class);
     }
 
     public function boot(): void
