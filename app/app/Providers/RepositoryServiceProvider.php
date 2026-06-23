@@ -55,10 +55,12 @@ use App\Repositories\Eloquent\OrderRepository;
 use App\Services\Interfaces\OrderServiceInterface;
 use App\Services\Admin\OrderService;
 
+//Product Post
 use App\Repositories\Interfaces\ProductPostRepositoryInterface;
 use App\Repositories\Eloquent\ProductPostRepository;
 use App\Services\Interfaces\ProductPostServiceInterface;
 use App\Services\Admin\ProductPostService;
+
 class RepositoryServiceProvider extends ServiceProvider
 {
     public function register(): void
