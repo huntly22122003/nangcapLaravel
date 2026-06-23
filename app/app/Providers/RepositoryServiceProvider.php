@@ -54,6 +54,11 @@ use App\Repositories\Interfaces\OrderRepositoryInterface;
 use App\Repositories\Eloquent\OrderRepository;
 use App\Services\Interfaces\OrderServiceInterface;
 use App\Services\Admin\OrderService;
+
+use App\Repositories\Interfaces\ProductPostRepositoryInterface;
+use App\Repositories\Eloquent\ProductPostRepository;
+use App\Services\Interfaces\ProductPostServiceInterface;
+use App\Services\Admin\ProductPostService;
 class RepositoryServiceProvider extends ServiceProvider
 {
     public function register(): void
@@ -88,6 +93,9 @@ class RepositoryServiceProvider extends ServiceProvider
         // Order
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
         $this->app->bind(OrderServiceInterface::class, OrderService::class);
+        // Product Post
+        $this->app->bind(ProductPostRepositoryInterface::class, ProductPostRepository::class);
+        $this->app->bind(ProductPostServiceInterface::class, ProductPostService::class);
     }
 
     public function boot(): void

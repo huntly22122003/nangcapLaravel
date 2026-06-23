@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\Admin\ContactController;
 use App\Http\Controllers\Api\Admin\FaqController;
 use App\Http\Controllers\Api\Admin\PageController;
 use App\Http\Controllers\Api\Admin\OrderController;
+use App\Http\Controllers\Api\Admin\ProductPostController;
 
 // Public routes
 Route::get('/categories', [CategoryController::class, 'index']);
@@ -84,6 +85,9 @@ Route::prefix('admin')->group(function () {
         // Order
         Route::apiResource('orders', OrderController::class);
         Route::post('orders/{id}/status', [OrderController::class, 'updateStatus']);
+        // Product Post
+        Route::apiResource('product-posts', ProductPostController::class);
+
     });
 });
 
