@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PageController;
-use App\Http\Controllers\Api\GalleryController;
 use App\Http\Controllers\Api\MenuController;
 use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\RegistrationController;
@@ -14,6 +13,7 @@ use App\Http\Controllers\Api\Admin\BannerController;
 use App\Http\Controllers\Api\Admin\CategoryController;
 use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\Admin\PostController;
+use App\Http\Controllers\Api\Admin\GalleryController;
 // Public routes
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories/{id}', [CategoryController::class, 'show']);
@@ -71,6 +71,8 @@ Route::prefix('admin')->group(function () {
         Route::apiResource('users', UserController::class);
         // Posts
         Route::apiResource('posts', PostController::class);
+        // Galleries
+        Route::apiResource('galleries', GalleryController::class);
     });
 });
 

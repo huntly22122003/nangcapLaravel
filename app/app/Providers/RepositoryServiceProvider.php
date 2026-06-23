@@ -26,6 +26,11 @@ use App\Repositories\Eloquent\PostRepository;
 use App\Services\Interfaces\PostServiceInterface;
 use App\Services\Admin\PostService;
 
+use App\Repositories\Interfaces\GalleryRepositoryInterface;
+use App\Repositories\Eloquent\GalleryRepository;
+use App\Services\Interfaces\GalleryServiceInterface;
+use App\Services\Admin\GalleryService;
+
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -46,6 +51,9 @@ class RepositoryServiceProvider extends ServiceProvider
         // Post
         $this->app->bind(PostRepositoryInterface::class, PostRepository::class); 
         $this->app->bind(PostServiceInterface::class, PostService::class);
+        // Gallery
+        $this->app->bind(GalleryRepositoryInterface::class, GalleryRepository::class);
+        $this->app->bind(GalleryServiceInterface::class, GalleryService::class);
     }
 
     public function boot(): void

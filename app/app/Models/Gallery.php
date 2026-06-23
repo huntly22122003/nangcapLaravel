@@ -10,6 +10,14 @@ class Gallery extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'image_path', 'description', 'sort_order', 'is_active'
+        'title',
+        'image_path',
+        'description',
+        'sort_order',
+        'is_active',
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
     ];
 }
