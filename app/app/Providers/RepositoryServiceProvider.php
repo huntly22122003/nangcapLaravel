@@ -37,6 +37,11 @@ use App\Repositories\Eloquent\ContactRepository;
 use App\Services\Interfaces\ContactServiceInterface;
 use App\Services\Admin\ContactService;
 
+// Thêm các use statement cho Faq
+use App\Repositories\Interfaces\FaqRepositoryInterface;
+use App\Repositories\Eloquent\FaqRepository;
+use App\Services\Interfaces\FaqServiceInterface;
+use App\Services\Admin\FaqService;
 class RepositoryServiceProvider extends ServiceProvider
 {
     public function register(): void
@@ -62,6 +67,9 @@ class RepositoryServiceProvider extends ServiceProvider
         // Contact
         $this->app->bind(ContactRepositoryInterface::class, ContactRepository::class);
         $this->app->bind(ContactServiceInterface::class, ContactService::class);
+        // Faq
+        $this->app->bind(FaqRepositoryInterface::class, FaqRepository::class);
+        $this->app->bind(FaqServiceInterface::class, FaqService::class);
     }
 
     public function boot(): void

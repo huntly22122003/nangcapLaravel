@@ -10,6 +10,13 @@ class Faq extends Model
     use HasFactory;
 
     protected $fillable = [
-        'question', 'answer', 'sort_order', 'is_active'
+        'question',
+        'answer',
+        'sort_order',
+        'is_active',
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
     ];
 }

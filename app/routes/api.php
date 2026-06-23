@@ -14,6 +14,8 @@ use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\Admin\PostController;
 use App\Http\Controllers\Api\Admin\GalleryController;
 use App\Http\Controllers\Api\Admin\ContactController;
+use App\Http\Controllers\Api\Admin\FaqController;
+
 // Public routes
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories/{id}', [CategoryController::class, 'show']);
@@ -75,6 +77,8 @@ Route::prefix('admin')->group(function () {
         Route::apiResource('galleries', GalleryController::class);
         // Contacts
         Route::apiResource('contacts', ContactController::class);
+        // FAQs
+        Route::apiResource('faqs', FaqController::class);
     });
 });
 
