@@ -31,6 +31,11 @@ use App\Repositories\Eloquent\GalleryRepository;
 use App\Services\Interfaces\GalleryServiceInterface;
 use App\Services\Admin\GalleryService;
 
+// Thêm các use statement cho Contact
+use App\Repositories\Interfaces\ContactRepositoryInterface;
+use App\Repositories\Eloquent\ContactRepository;
+use App\Services\Interfaces\ContactServiceInterface;
+use App\Services\Admin\ContactService;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -54,6 +59,9 @@ class RepositoryServiceProvider extends ServiceProvider
         // Gallery
         $this->app->bind(GalleryRepositoryInterface::class, GalleryRepository::class);
         $this->app->bind(GalleryServiceInterface::class, GalleryService::class);
+        // Contact
+        $this->app->bind(ContactRepositoryInterface::class, ContactRepository::class);
+        $this->app->bind(ContactServiceInterface::class, ContactService::class);
     }
 
     public function boot(): void
