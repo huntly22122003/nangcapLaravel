@@ -42,6 +42,13 @@ use App\Repositories\Interfaces\FaqRepositoryInterface;
 use App\Repositories\Eloquent\FaqRepository;
 use App\Services\Interfaces\FaqServiceInterface;
 use App\Services\Admin\FaqService;
+
+// Thêm các use statement cho Page
+use App\Repositories\Interfaces\PageRepositoryInterface;
+use App\Repositories\Eloquent\PageRepository;
+use App\Services\Interfaces\PageServiceInterface;
+use App\Services\Admin\PageService;
+
 class RepositoryServiceProvider extends ServiceProvider
 {
     public function register(): void
@@ -70,6 +77,9 @@ class RepositoryServiceProvider extends ServiceProvider
         // Faq
         $this->app->bind(FaqRepositoryInterface::class, FaqRepository::class);
         $this->app->bind(FaqServiceInterface::class, FaqService::class);
+        // Page
+        $this->app->bind(PageRepositoryInterface::class, PageRepository::class);
+        $this->app->bind(PageServiceInterface::class, PageService::class);
     }
 
     public function boot(): void
